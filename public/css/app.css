@@ -1,0 +1,136 @@
+@font-face {
+  font-family: orator;
+  src: url("/fonts/orator.otf");
+}
+
+* {
+  font-family: orator;
+}
+
+.loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+video#bgvid {
+  position: fixed;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -100;
+  filter: brightness(0.2);
+  transform: scale(1.5);
+}
+
+.contact form {
+  overflow: hidden;
+  padding: 22px;
+  width: 100%;
+}
+
+.contact form div {
+  height: inherit;
+}
+
+.contact form input {
+  outline: none;
+  width: 100%;
+  padding-left: 15px;
+  color: black;
+  background-color: #414141;
+}
+
+.contact form textarea {
+  outline: none;
+  width: 100%;
+  padding: 3px 15px;
+  margin-top: 20px;
+  resize: none;
+  color: black;
+  background-color: #414141;
+}
+
+.contact form button {
+  outline: none;
+  margin-top: 20px;
+  background-color: #414141;
+  width: 14.5%;
+  padding: 10px;
+}
+
+.alert {
+  display: none;
+  font-size: 12px;
+  position: absolute;
+  height: initial;
+  top: 4px;
+  margin: auto;
+  width: 92%;
+  text-align: center;
+}
+
+.back {
+  position: absolute;
+  top: 40px;
+  left: 60px;
+}
+
+/* Webkit for inputs */
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+  color: black;
+}
+
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+  color: black;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: black;
+}
+
+/* Change Autocomplete styles in Chrome*/
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+@media screen and (max-width: 640px) {
+  video#bgvid {
+    transform: scale(3.7);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  video#bgvid {
+    transform: scale(1.1);
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .infos {
+    border: #404040 1px solid;
+    box-shadow: 3px 3px 28px -5PX black;
+    margin-bottom: 20px;
+  }
+
+  .contact {
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 488.406px;
+    background-color: black;
+  }
+}
+
