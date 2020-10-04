@@ -1,0 +1,16 @@
+@font-face {
+    font-family: orator;
+    src: url('/fonts/orator.otf');
+}
+* {
+    font-family: orator;
+}
+.h-500 {
+    height:500px;
+}
+.w-40 {
+    width:40vw;
+}
+.item-end {
+    align-items: end;
+}

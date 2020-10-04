@@ -1,19 +1,10 @@
-@font-face {
-  font-family: orator;
-  src: url("/fonts/orator.otf");
-}
-
-* {
-  font-family: orator;
-}
-
 .loading {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 1;
+  width: 100%;
+  height: 100%;
+  z-index: 51;
   background-color: black;
   display: flex;
   align-items: center;
@@ -58,6 +49,7 @@ video#bgvid {
 }
 
 .contact form button {
+  color: black;
   outline: none;
   margin-top: 20px;
   background-color: #414141;
@@ -80,6 +72,11 @@ video#bgvid {
   position: absolute;
   top: 40px;
   left: 60px;
+}
+
+.back-button {
+  font-size: 13px;
+  margin-right: 1px;
 }
 
 /* Webkit for inputs */
@@ -132,5 +129,26 @@ input:-webkit-autofill:focus {
     width: 488.406px;
     background-color: black;
   }
+}
+
+@font-face {
+  font-family: orator;
+  src: url("/fonts/orator.otf");
+}
+
+* {
+  font-family: orator;
+}
+
+.h-500 {
+  height: 500px;
+}
+
+.w-40 {
+  width: 40vw;
+}
+
+.item-end {
+  align-items: end;
 }
 

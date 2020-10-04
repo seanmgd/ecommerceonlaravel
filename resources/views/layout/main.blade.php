@@ -13,19 +13,17 @@
 
         <link rel="apple-touch-icon" sizes="180x180" href="/img/logo.ico">
         <link rel="stylesheet" href="/css/tailwind.css">
-        <link rel="stylesheet" href="/css/app.css">
+        <link rel="stylesheet" href="/css/main.css">
+        @yield('extra-css')
     </head>
     <body class="bg-black">
         <div class="loading">
-            <img class="sm:w-2/6 w-1/2 object-cover object-center rounded" alt="logob"
-                 src="/img/logo2.gif">
+            <img class="sm:w-1/6 w-1/2 object-cover object-center rounded" alt="logo" src="/img/logo2.gif">
         </div>
         <video autoplay="true" muted loop id="bgvid" src="/videos/4k_short.mp4" title="bg">
             <source src="/videos/4k_short.mp4" type="video/mp4">
         </video>
-        <div class="flex-center position-ref full-height">
             @yield('content')
-        </div>
         <script src="/js/modernizr-3.11.2.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="/js/main.js"></script>
