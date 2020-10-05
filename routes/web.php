@@ -1,5 +1,7 @@
 <?php
 
+use App\Mail\ContactMail;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +17,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::view('/works', 'home.works')->name('works');
-Route::view('/contact', 'home.contact')->name('contact');
 Route::view('/cart', 'layout.cart')->name('cart');
 Route::view('/product', 'product.single')->name('product');
+Route::view('/contact', 'home.contact')->name('contact');
+Route::post('/contact', function(Request $request) {
+    Mail::send(new ContactMail($request));
+    return redirect('/contact?success=true');
+});
 
 Route::get('/shop', 'ProductController@index')->name('shop');
 Route::get('/shop/product', 'ProductController@create')->name('new');
