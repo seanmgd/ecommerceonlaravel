@@ -14,17 +14,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('product.index');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('product.create');
+        return view('product.index', [
+            'products' => Product::all()
+        ]);
     }
 
     /**
@@ -41,12 +33,14 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param $slug
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        return view('product.single', [
+            'product' => Product::where('slug', $slug)->firstOrFail()
+        ]);
     }
 
     /**

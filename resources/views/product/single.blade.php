@@ -4,7 +4,7 @@
 @section('content')
     <section class="text-custom-grey body-font flex items-center justify-center flex-col h-screen page-layout-left-sidebar shop">
         <div class="relative infos flex-col flex items-center justify-center bg-black sm:p-16 p-4 rounded container">
-            <a class="back" href="{{ route('home') }}"><span class="back-button"><</span>back</a>
+            <a class="back" href="{{ route('shop') }}"><span class="back-button"><</span>back</a>
             <div class="summary-container product grid grid-cols-3 gap-3 mt-5">
             <div class="col-span-2 col-sm-6 entry-image flex justify-center">
                 <div class="single-product-images">
@@ -15,28 +15,28 @@
                                     <li class="caroufredsel-item">
                                         <div class="thumb">
                                             <a href="images/product/product-detail/product-1.jpg" data-rel="magnific-popup-verticalfit" title="Product-detail">
-                                                <img width="800" height="850" src="/img/large-product.jpg" alt="Product-detail"/>
+                                                <img width="800" height="850" src="{{ Voyager::image($product->image) }}" alt="Product-detail"/>
                                             </a>
                                         </div>
                                     </li>
                                     <li class="caroufredsel-item">
                                         <div class="thumb">
                                             <a href="images/product/product-detail/product-2.jpg" data-rel="magnific-popup-verticalfit" title="Product-detail">
-                                                <img width="800" height="850" src="images/product/product-detail/product-2.jpg" alt="Product-detail"/>
+                                                <img width="800" height="850" src="{{ Voyager::image($product->image) }}" alt="Product-detail"/>
                                             </a>
                                         </div>
                                     </li>
                                     <li class="caroufredsel-item">
                                         <div class="thumb">
                                             <a href="images/product/product-detail/product-3.jpg" data-rel="magnific-popup-verticalfit" title="Product-detail">
-                                                <img width="800" height="850" src="images/product/product-detail/product-3.jpg" alt="Product-detail"/>
+                                                <img width="800" height="850" src="{{ Voyager::image($product->image) }}" alt="Product-detail"/>
                                             </a>
                                         </div>
                                     </li>
                                     <li class="caroufredsel-item">
                                         <div class="thumb">
                                             <a href="images/product/product-detail/product-4.jpg" data-rel="magnific-popup-verticalfit" title="Product-detail">
-                                                <img width="800" height="850" src="/img/product.jpg" alt="Product-detail"/>
+                                                <img width="800" height="850" src="{{ Voyager::image($product->image) }}" alt="Product-detail"/>
                                             </a>
                                         </div>
                                     </li>
@@ -53,28 +53,28 @@
                                     <li class="caroufredsel-item selected">
                                         <div class="thumb">
                                             <a href="#" data-rel="1" title="Product-detail">
-                                                <img width="100" height="150" src="img/product.jpg" alt="Product-detail"/>
+                                                <img width="100" height="150" src="{{ Voyager::image($product->image) }}" alt="Product-detail"/>
                                             </a>
                                         </div>
                                     </li>
                                     <li class="caroufredsel-item">
                                         <div class="thumb">
                                             <a href="#" data-rel="2" title="Product-detail">
-                                                <img width="100" height="150" src="img/product.jpg" alt="Product-detail"/>
+                                                <img width="100" height="150" src="{{ Voyager::image($product->image) }}" alt="Product-detail"/>
                                             </a>
                                         </div>
                                     </li>
                                     <li class="caroufredsel-item">
                                         <div class="thumb">
                                             <a href="#" data-rel="3" title="Product-detail">
-                                                <img width="100" height="150" src="img/product.jpg" alt="Product-detail"/>
+                                                <img width="100" height="150" src="{{ Voyager::image($product->image) }}" alt="Product-detail"/>
                                             </a>
                                         </div>
                                     </li>
                                     <li class="caroufredsel-item">
                                         <div class="thumb">
                                             <a href="#" data-rel="4" title="Product-detail">
-                                                <img width="100" height="150" src="img/product.jpg" alt="Product-detail"/>
+                                                <img width="100" height="150" src="{{ Voyager::image($product->image) }}" alt="Product-detail"/>
                                             </a>
                                         </div>
                                     </li>
@@ -86,11 +86,11 @@
             </div>
             <div class="col-span-1 col-sm-6 entry-summary h-500 flex item-end mr-16">
                 <div class="summary">
-                    <h1 class="product_title entry-title">tee shirt long sleeves sinistre</h1>
-                    <p class="price"><span class="amount">40euros</span>
+                    <h1 class="product_title entry-title">{{$product->name}}</h1>
+                    <p class="price"><span class="amount">{{$product->price}}</span>
                     <div class="my-10">
                         <p>
-                            50% coton 50% polyester. Fit normally.
+                            {{$product->description}}
                         </p>
                     </div>
                     <div class="product-actions res-color-attr">

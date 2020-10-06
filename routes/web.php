@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index')->name('home');
 Route::view('/works', 'home.works')->name('works');
 Route::view('/cart', 'layout.cart')->name('cart');
-Route::view('/product', 'product.single')->name('product');
 Route::view('/contact', 'home.contact')->name('contact');
 Route::post('/contact', function(Request $request) {
     Mail::send(new ContactMail($request));
@@ -26,7 +25,7 @@ Route::post('/contact', function(Request $request) {
 });
 
 Route::get('/shop', 'ProductController@index')->name('shop');
-Route::get('/shop/product', 'ProductController@create')->name('new');
+Route::get('/shop/{product}', 'ProductController@show')->name('product');
 Route::post('/shop/store', 'ProductController@store')->name('store');
 
 
