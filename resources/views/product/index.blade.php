@@ -5,7 +5,7 @@
     <section class="text-custom-grey body-font flex items-center justify-center flex-col h-screen page-layout-left-sidebar shop">
         <div class="relative infos flex-col flex items-center justify-center bg-black sm:p-16 p-4 rounded">
             <a class="back" href="{{ route('home') }}"><span class="back-button"><</span>back </a>
-            <div class="col-md-9 main-wrap pt-2">
+            <div class="container pt-2">
                 <div class="main-content">
                     <div class="shop-loop grid">
                         <ul class="products">

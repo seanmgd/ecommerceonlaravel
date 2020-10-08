@@ -14,32 +14,22 @@
                                 <ul class="caroufredsel-items">
                                     <li class="caroufredsel-item">
                                         <div class="thumb">
-                                            <a href="images/product/product-detail/product-1.jpg" data-rel="magnific-popup-verticalfit" title="Product-detail">
+                                            <a href="#" data-rel="magnific-popup-verticalfit" title="Product-detail">
                                                 <img width="800" height="850" src="{{ Voyager::image($product->image) }}" alt="Product-detail"/>
                                             </a>
                                         </div>
                                     </li>
+                                    @if(json_decode($product->images, true))
+                                    @foreach(json_decode($product->images, true) as $image)
                                     <li class="caroufredsel-item">
                                         <div class="thumb">
-                                            <a href="images/product/product-detail/product-2.jpg" data-rel="magnific-popup-verticalfit" title="Product-detail">
-                                                <img width="800" height="850" src="{{ Voyager::image($product->image) }}" alt="Product-detail"/>
+                                            <a href="#" data-rel="magnific-popup-verticalfit" title="Product-detail">
+                                                <img width="800" height="850" src="{{ Voyager::image($image) }}" alt="Product-detail"/>
                                             </a>
                                         </div>
                                     </li>
-                                    <li class="caroufredsel-item">
-                                        <div class="thumb">
-                                            <a href="images/product/product-detail/product-3.jpg" data-rel="magnific-popup-verticalfit" title="Product-detail">
-                                                <img width="800" height="850" src="{{ Voyager::image($product->image) }}" alt="Product-detail"/>
-                                            </a>
-                                        </div>
-                                    </li>
-                                    <li class="caroufredsel-item">
-                                        <div class="thumb">
-                                            <a href="images/product/product-detail/product-4.jpg" data-rel="magnific-popup-verticalfit" title="Product-detail">
-                                                <img width="800" height="850" src="{{ Voyager::image($product->image) }}" alt="Product-detail"/>
-                                            </a>
-                                        </div>
-                                    </li>
+                                    @endforeach
+                                    @endif
                                 </ul>
                                 <a href="#" class="caroufredsel-prev"></a>
                                 <a href="#" class="caroufredsel-next"></a>
@@ -50,6 +40,7 @@
                         <div class="caroufredsel product-thumbnails-slider" data-visible-min="2" data-visible-max="4" data-scrollduration="500" data-direction="up" data-height="100%" data-circular="1" data-responsive="0">
                             <div class="caroufredsel-wrap">
                                 <ul class="single-product-images-slider-synchronise caroufredsel-items">
+                                    @if(json_decode($product->images, true))
                                     <li class="caroufredsel-item selected">
                                         <div class="thumb">
                                             <a href="#" data-rel="1" title="Product-detail">
@@ -57,27 +48,16 @@
                                             </a>
                                         </div>
                                     </li>
+                                    @foreach(json_decode($product->images, true) as $image)
                                     <li class="caroufredsel-item">
                                         <div class="thumb">
                                             <a href="#" data-rel="2" title="Product-detail">
-                                                <img width="100" height="150" src="{{ Voyager::image($product->image) }}" alt="Product-detail"/>
+                                                <img width="100" height="150" src="{{ Voyager::image($image) }}" alt="Product-detail"/>
                                             </a>
                                         </div>
                                     </li>
-                                    <li class="caroufredsel-item">
-                                        <div class="thumb">
-                                            <a href="#" data-rel="3" title="Product-detail">
-                                                <img width="100" height="150" src="{{ Voyager::image($product->image) }}" alt="Product-detail"/>
-                                            </a>
-                                        </div>
-                                    </li>
-                                    <li class="caroufredsel-item">
-                                        <div class="thumb">
-                                            <a href="#" data-rel="4" title="Product-detail">
-                                                <img width="100" height="150" src="{{ Voyager::image($product->image) }}" alt="Product-detail"/>
-                                            </a>
-                                        </div>
-                                    </li>
+                                    @endforeach
+                                    @endif
                                 </ul>
                             </div>
                         </div>
