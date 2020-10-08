@@ -2210,7 +2210,6 @@ p.demo_store {
 }
 .shop ul.products li.product figcaption .shop-loop-product-info .info-meta .loop-add-to-cart a {
     color: white;
-    text-decoration: underline;
 }
 .shop ul.products li.product strong {
     display: block;
