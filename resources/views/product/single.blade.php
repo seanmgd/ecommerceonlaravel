@@ -74,7 +74,8 @@
                         </p>
                     </div>
                     <div class="product-actions res-color-attr">
-                        <form class="cart">
+                        <form class="cart" action="{{ route('cart.store') }}" method="post">
+                            {{ csrf_field() }}
                             <div class="product-options-outer mb-10">
                                 <div class="variation_form_section">
                                     <div class="product-options icons-lg">
@@ -113,7 +114,10 @@
                             <div class="single_variation_wrap">
                                 <div class="variations_button">
                                     <div class="quantity">
-                                        <input type="number" name="quantity" value="1" title="Qty" class="input-text qty text" size="4">
+                                        <input type="hidden" name="id" value="{{ $product->id }}">
+                                        <input type="hidden" name="name" value="{{ $product->name }}">
+                                        <input type="hidden" name="price" value="{{ $product->price }}">
+                                        <input type="number" name="qty" value="1" title="Qty" class="input-text qty text" size="4">
                                     </div>
                                     <button type="submit" class="button">Add to cart</button>
                                 </div>

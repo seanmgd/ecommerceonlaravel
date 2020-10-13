@@ -1,11 +1,4 @@
 window.onload = () => {
-  if (window.location.search) {
-    if (window.location.search === "?success=true") {
-      document.getElementsByClassName("alert-success")[0].style.display = "block"
-    } else {
-      document.getElementsByClassName("alert-danger")[0].style.display = "block"
-    }
-  }
 
   document.getElementsByClassName("loading")[0].style.display = "none";
 
@@ -17,3 +10,9 @@ setTimeout(function(){
   let bannerNode = document.querySelector('[alt="www.000webhost.com"]').parentNode.parentNode;
   bannerNode.parentNode.removeChild(bannerNode);
 }, 1000);
+//Delete success message
+let alertSuccess = document.getElementsByClassName("alert")[0];
+if (alertSuccess !== undefined) {
+    alertSuccess.style.opacity = 1;
+    (function fade(){(alertSuccess.style.opacity-=.05) <0 ? alertSuccess.style.display="none" : setTimeout(fade,100)})();
+}
