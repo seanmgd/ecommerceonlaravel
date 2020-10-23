@@ -1,30 +1,28 @@
-@if (Route::has('login'))
-    <div class="top-right links">
-        @auth
-            <a href="{{ url('/home') }}">Home</a>
-        @else
-            <a href="{{ route('login') }}">Login</a>
-
-            @if (Route::has('register'))
-                <a href="{{ route('register') }}">Register</a>
-            @endif
-        @endauth
-    </div>
-@endif
-
-<div class="content">
-    <div class="title m-b-md">
-        Laravel
-    </div>
-
-    <div class="links">
-        <a href="https://laravel.com/docs">Docs</a>
-        <a href="https://laracasts.com">Laracasts</a>
-        <a href="https://laravel-news.com">News</a>
-        <a href="https://blog.laravel.com">Blog</a>
-        <a href="https://nova.laravel.com">Nova</a>
-        <a href="https://forge.laravel.com">Forge</a>
-        <a href="https://vapor.laravel.com">Vapor</a>
-        <a href="https://github.com/laravel/laravel">GitHub</a>
+ <div class="" style="width:90px;position: absolute;left: 40px;">
+    <div class="flex justify-center" style="writing-mode:vertical-rl;transform: rotate(180deg);">
+        <a href="{{ route('works') }}"
+           class="inline-flex sm:px-8 px-2 focus:outline-none hover:bg-black-700 hover:text-white text-xl cursor-pointer mb-5">
+            works
+        </a>
+        <a href="https://www.instagram.com/sinistre.vj/" target="_blank"
+           class="inline-flex sm:px-8 px-2 focus:outline-none hover:bg-black-700 hover:text-white text-xl cursor-pointer mb-5">
+            instagram
+        </a>
+        <a href="https://vimeo.com/sinistrevj" target="_blank"
+           class="inline-flex sm:px-8 px-2 focus:outline-none hover:bg-black-700 hover:text-white text-xl cursor-pointer mb-5">
+            vimeo
+        </a>
+        <a href="{{ route('shop') }}"
+           class="inline-flex sm:px-8 px-2 focus:outline-none hover:bg-black-700 hover:text-white text-xl cursor-pointer mb-5">
+            shop
+        </a>
+        <a href="{{ route('contact') }}"
+           class="inline-flex sm:px-8 px-2 focus:outline-none hover:bg-black-700 hover:text-white text-xl cursor-pointer mb-5">
+            contact
+        </a>
     </div>
 </div>
+
+<a href="{{ route('home') }}" style="position:absolute;right:10px;bottom:0;width:80px">
+    <img alt="logob" src="/img/logo2.gif">
+</a>

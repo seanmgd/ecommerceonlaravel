@@ -98,6 +98,44 @@ input:-webkit-autofill:focus {
     transition: background-color 5000s ease-in-out 0s;
 }
 
+// Checkout
+.custom-card-panel {
+    padding:20px;
+    background-color:#3c3c3c;
+    border-radius:4px;
+    color: white;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+//Shop
+figure:hover {
+    background:black;
+}
+
+.shop-loop-thumbnail {
+    img:hover {
+        opacity:0;
+        position: relative;
+        z-index: 3;
+    }
+    p {
+        opacity:0;
+        position: absolute;
+        width:100%;
+        text-align:center;
+        top: 50%;
+        z-index: 2;
+    }
+    &:hover {
+        p {
+            opacity:1;
+        }
+    }
+}
+
+
+// Responsive
 @media screen and (max-width: 640px) {
     video#bgvid {
         transform: scale(3.7);
@@ -113,8 +151,11 @@ input:-webkit-autofill:focus {
 @media screen and (min-width: 640px) {
     .infos {
         border: #404040 1px solid;
-        box-shadow: 3px 3px 28px -5PX black;
-        margin-bottom: 20px;
+        box-shadow: 3px 3px 28px -5px black;
+        display: flex;
+        flex-direction: row;
+        width: 90vw;
+        height: 83vh;
     }
 
     .contact {

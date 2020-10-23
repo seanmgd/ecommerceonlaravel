@@ -32,6 +32,10 @@ Route::post('/cart', 'CartController@store')->name('cart.store');
 Route::get('/cart/reset', 'CartController@reset')->name('cart.reset');
 Route::delete('/cart/{product}', 'CartController@destroy')->name('cart.destroy');
 
+//Checkout routes
+Route::get('/checkout', 'CheckoutController@checkout')->name('checkout.index');
+Route::get('/checkout/success', 'CheckoutController@success')->name('checkout.success');
+
 //Product routes
 Route::get('/shop', 'ProductController@index')->name('shop');
 Route::get('/shop/{product}', 'ProductController@show')->name('product');

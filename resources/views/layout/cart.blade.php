@@ -2,69 +2,66 @@
 @section('title') cart @endsection
 @section('extra-css') <link rel="stylesheet" href="/css/shop.css"> @endsection
 @section('content')
-    <section class="text-custom-grey body-font h-screen flex items-center justify-center flex-col">
-        <div class="infos flex-col flex items-center justify-center bg-black sm:p-16 p-4 rounded relative">
-            <a class="back" href="{{ route('home') }}"><span class="back-button"><</span>back</a>
-            <div class="w-40 main-wrap mt-5">
-                <div class="main-content">
-                    @if($message = Session::get('success'))
-                        <div class="px-4 py-3 alert" role="alert" style="top: 20px">
-                            <p class="font-bold text-white">{{$message}}</p>
-                        </div>
-                    @endif
-                    @if(!Cart::content()->isEmpty())
-                    <div class="shop">
-                            <table class="table shop_table cart">
-                                <thead>
-                                <tr>
-                                    <th class="product-remove">&nbsp;</th>
-                                    <th class="product-name text-left">Product</th>
-                                    <th class="product-thumbnail">&nbsp;</th>
-                                    <th class="product-price text-center">Price</th>
-                                    <th class="product-quantity text-center">Quantity</th>
-                                    <th class="product-subtotal text-center hidden-xs">Total</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach(Cart::content() as $product)
-                                <tr class="cart_item">
-                                    <form action="{{ route('cart.destroy', $product->rowId ) }}" method="POST">
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
-                                        <td class="product-remove hidden-xs">
-                                                <a href="#" class="remove" title="Remove this item" type="submit">
-                                                    <button>&times;</button>
-                                                </a>
-                                        </td>
-                                    </form>
-                                    <form>
-                                    <td class="product-thumbnail hidden-xs">
-                                        <a href="#">
-                                            <img width="100" height="150" src="{{ Voyager::image($product->model->image) }}" alt="Product-1" class="mt-1"/>
+    <div class="w-40 main-wrap mt-5">
+        <div class="main-content">
+            @if($message = Session::get('success'))
+                <div class="px-4 py-3 alert" role="alert" style="top: 20px">
+                    <p class="font-bold text-white">{{$message}}</p>
+                </div>
+            @endif
+            @if(!Cart::content()->isEmpty())
+            <div class="shop">
+                    <table class="table shop_table cart">
+                        <thead>
+                        <tr>
+                            <th class="product-remove">&nbsp;</th>
+                            <th class="product-name text-left">Product</th>
+                            <th class="product-thumbnail">&nbsp;</th>
+                            <th class="product-price text-center">Price</th>
+                            <th class="product-quantity text-center">Quantity</th>
+                            <th class="product-subtotal text-center hidden-xs">Total</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach(Cart::content() as $product)
+                        <tr class="cart_item">
+                            <form action="{{ route('cart.destroy', $product->rowId ) }}" method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                                <td class="hidden-xs">
+                                        <a href="#" class="remove" title="Remove this item" type="submit">
+                                            <button>&times;</button>
                                         </a>
-                                    </td>
-                                    <td class="product-name">
-                                        <a href="#">{{ $product->model->name }}</a>
-                                        <dl class="variation">
-                                            <dt class="variation-Size">Size:</dt>
-                                            <dd class="variation-Size"><p>Extra Large</p></dd>
-                                        </dl>
-                                    </td>
-                                    <td class="product-price text-center">
-                                        <span class="amount">{{ $product->model->price }} €</span>
-                                    </td>
-                                    <td class="product-quantity text-center">
-                                        <div class="quantity flex justify-center">
-                                            <input type="number" step="1" min="0" name="qty" value="{{ $product->qty }}" title="Qty" class="input-text qty text" size="4"/>
-                                        </div>
-                                    </td>
-                                    <td class="product-subtotal hidden-xs text-center">
-                                        <span class="amount">44.00 €</span>
-                                    </td>
+                                </td>
+                            </form>
+                            <form>
+                            <td class="product-thumbnail hidden-xs">
+                                <a href="{{ route('product', $product->model->slug) }}">
+                                    <img width="100" height="150" src="{{ Voyager::image($product->model->image) }}" alt="Product-1" class="mt-1"/>
+                                </a>
+                            </td>
+                            <td class="product-name">
+                                <a href="{{ route('product', $product->model->slug) }}">{{ $product->model->name }}</a>
+                                <dl class="variation">
+                                    <dt class="variation-Size">Size:</dt>
+                                    <dd class="variation-Size"><p>{{ $product->options['size'] }}</p></dd>
+                                </dl>
+                            </td>
+                            <td class="product-price text-center">
+                                <span class="amount">{{ $product->model->price }} €</span>
+                            </td>
+                            <td class="product-quantity text-center">
+                                <div class="quantity flex justify-center">
+                                    <input type="number" step="1" min="0" name="qty" value="{{ $product->qty }}" title="Qty" class="input-text qty text" size="4"/>
+                                </div>
+                            </td>
+                            <td class="product-subtotal hidden-xs text-center">
+                                <span class="amount">44.00 €</span>
+                            </td>
 
-                                    </form>
-                                </tr>
-                                @endforeach
+                            </form>
+                        </tr>
+                        @endforeach
 {{--                                <tr>--}}
 {{--                                    <td colspan="6" class="actions">--}}
 {{--                                        <div class="coupon">--}}
@@ -75,29 +72,29 @@
 {{--                                        <input type="submit" class="button update-cart-button" name="update_cart" value="Update Cart"/>--}}
 {{--                                    </td>--}}
 {{--                                </tr>--}}
-                                </tbody>
-                            </table>
-                        <div class="cart-collaterals pt-16">
-                            <div class="cart_totals">
-                                <h2 class="mb-3 mr-3">Cart Totals</h2>
-                                <table>
-                                    <tr class="cart-subtotal">
-                                        <th>Subtotal</th>
-                                        <td><span>56.00 €</span></td>
-                                    </tr>
-                                    <tr class="shipping">
-                                        <th>Shipping</th>
-                                        <td><span>10.00 €</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Total</th>
-                                        <td><strong><span class="amount">56.00 €</span></strong></td>
-                                    </tr>
-                                </table>
-                                <div class="wc-proceed-to-checkout">
-                                    <a href="#" class="checkout-button button alt wc-forward">Proceed to Checkout</a>
-                                </div>
-                            </div>
+                        </tbody>
+                    </table>
+                <div class="cart-collaterals pt-16">
+                    <div class="cart_totals">
+                        <h2 class="mb-3 mr-3">Cart Totals</h2>
+                        <table>
+                            <tr class="cart-subtotal">
+                                <th>Subtotal</th>
+                                <td><span>{{Cart::subtotal()}} €</span></td>
+                            </tr>
+                            <tr class="shipping">
+                                <th>Shipping</th>
+                                <td><span>{{number_format(8, 2)}} €</span></td>
+                            </tr>
+                            <tr>
+                                <th>Total</th>
+                                <td><strong><span class="amount">{{number_format(Cart::subtotal() + 8, 2)}} €</span></strong></td>
+                            </tr>
+                        </table>
+                        <div class="wc-proceed-to-checkout">
+                            <a href="#" class="checkout-button button alt wc-forward">Proceed to Checkout</a>
+                        </div>
+                    </div>
 {{--                            <div class="cross-sells ml-4">--}}
 {{--                                <h2>You may be interested in&hellip;</h2>--}}
 {{--                                <ul class="products columns-2">--}}
@@ -165,13 +162,11 @@
 {{--                                    </li>--}}
 {{--                                </ul>--}}
 {{--                            </div>--}}
-                        </div>
-                    </div>
-                    @else
-                    <a class="flex items-center justify-center" href="{{ route('shop') }}">Empty card, you must add product</a>
-                    @endif
                 </div>
             </div>
+            @else
+            <a class="flex items-center justify-center" href="{{ route('shop') }}">Empty cart, you must add product</a>
+            @endif
         </div>
-    </section>
+    </div>
 @endsection
