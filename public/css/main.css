@@ -103,9 +103,9 @@ input:-webkit-autofill:focus {
 
 .custom-card-panel {
   padding: 20px;
-  background-color: #3c3c3c;
+  background-color: #2b282859;
   border-radius: 4px;
-  color: white;
+  color: #8e8989;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
 }
