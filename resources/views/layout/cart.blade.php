@@ -92,7 +92,7 @@
                             </tr>
                         </table>
                         <div class="wc-proceed-to-checkout">
-                            <a href="#" class="checkout-button button alt wc-forward">Proceed to Checkout</a>
+                            <a href="{{route('checkout.index')}}" class="checkout-button button alt wc-forward">Proceed to Checkout</a>
                         </div>
                     </div>
 {{--                            <div class="cross-sells ml-4">--}}
