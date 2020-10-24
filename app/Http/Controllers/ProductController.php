@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use TCG\Voyager\Facades\Voyager;
 
 class ProductController extends Controller
 {
@@ -17,6 +18,29 @@ class ProductController extends Controller
         return view('product.index', [
             'products' => Product::all()
         ]);
+    }
+    /**
+     * Display a listing of the resource via API.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function indexApi()
+    {
+        $products = Product::all();
+        $productsUpdated = [];
+        foreach($products as $product) {
+            $product->newImage = Voyager::image($product->image);
+            if(json_decode($product->images, true)) {
+                $images = [];
+                foreach(json_decode($product->images, true) as $image){
+                    array_push($images, Voyager::image($product->image));
+                }
+            }
+            $product->newImages = $images;
+            $product->newImage = Voyager::image($product->image);
+            array_push($productsUpdated, $product);
+        }
+        return response()->json($productsUpdated, 200);
     }
 
     /**
@@ -42,6 +66,31 @@ class ProductController extends Controller
             'product' => Product::where('slug', $slug)->firstOrFail()
         ]);
     }
+
+    /**
+     * Display the specified resource via API.
+     *
+     * @param $slug
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function showApi($slug)
+    {
+        $product = Product::where('slug', $slug)->firstOrFail();
+        $productUpdated = [];
+        $product->newImage = Voyager::image($product->image);
+        if(json_decode($product->images, true)) {
+            $images = [];
+            foreach(json_decode($product->images, true) as $image){
+                array_push($images, Voyager::image($product->image));
+            }
+        }
+        $product->newImages = $images;
+        $product->newImage = Voyager::image($product->image);
+        array_push($productUpdated, $product);
+
+        return response()->json($productUpdated, 200);
+    }
+
 
     /**
      * Show the form for editing the specified resource.

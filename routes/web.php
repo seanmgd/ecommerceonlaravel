@@ -15,18 +15,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
+//Homepage routes
+Route::view('/', 'home.index')->name('home');
 Route::view('/works', 'home.works')->name('works');
-Route::view('/cart', 'layout.cart')->name('cart');
 Route::view('/contact', 'home.contact')->name('contact');
+
+//Contact form route
 Route::post('/contact', function(Request $request) {
     Mail::send(new ContactMail($request));
-    return redirect('/contact?success=true');
+    return redirect('contact')->with('success', 'Message successfully sent');
 });
 
+//Cart routes
+Route::get('/cart', 'CartController@index')->name('cart.index');
+Route::post('/cart', 'CartController@store')->name('cart.store');
+Route::get('/cart/reset', 'CartController@reset')->name('cart.reset');
+Route::delete('/cart/{product}', 'CartController@destroy')->name('cart.destroy');
+
+//Checkout routes
+Route::get('/checkout', 'CheckoutController@checkout')->name('checkout.index');
+Route::get('/checkout/success', 'CheckoutController@success')->name('checkout.success');
+
+//Product routes
 Route::get('/shop', 'ProductController@index')->name('shop');
 Route::get('/shop/{product}', 'ProductController@show')->name('product');
-Route::post('/shop/store', 'ProductController@store')->name('store');
 
 
 Route::group(['prefix' => 'admin'], function () {

@@ -5,6 +5,9 @@
 * {
     font-family: orator;
 }
+a, button:focus {
+    outline:none;
+}
 .h-500 {
     height: 500px;
 }
@@ -13,6 +16,9 @@
 }
 .w-20 {
     width: 20vw;
+}
+.w-80 {
+    width: 80vw;
 }
 .item-end {
     align-items: end;
