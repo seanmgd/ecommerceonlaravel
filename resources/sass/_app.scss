@@ -101,20 +101,21 @@ input:-webkit-autofill:focus {
 // Checkout
 .custom-card-panel {
     padding:20px;
-    background-color:#2b282859;
-    border-radius:4px;
     color: #8e8989;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
 }
 
 //Shop
-figure:hover {
-    background:black;
+.image-div {
+    width: 400px;
+    height: 613px;
+    background-size: cover;
+    background-position: center;
+    transition: ease .3s;
 }
 
-.shop-loop-thumbnail {
-    img:hover {
+.image-container {
+    position:relative;
+    img, div:hover {
         opacity:0;
         position: relative;
         z-index: 3;

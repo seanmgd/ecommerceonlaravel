@@ -19,5 +19,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //Product routes
-Route::get('/shop', 'ProductController@indexApi')->name('shop');
-Route::get('/shop/{product}', 'ProductController@showApi')->name('product');
+Route::get('/shop', 'ProductController@indexApi');
+Route::get('/shop/{product}', 'ProductController@showApi');
+
+//Video route
+Route::get('/videos', 'VideoController@indexApi');
+
+//Cart routes
+Route::get('/cart', 'CartController@indexApi');
+Route::get('/cart/reset', 'CartController@resetApi');
+Route::post('/cart', 'CartController@storeApi');
+Route::delete('/cart/{product}', 'CartController@destroyApi');

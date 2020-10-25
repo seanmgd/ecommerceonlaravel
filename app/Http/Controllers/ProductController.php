@@ -19,6 +19,7 @@ class ProductController extends Controller
             'products' => Product::all()
         ]);
     }
+
     /**
      * Display a listing of the resource via API.
      *
@@ -28,16 +29,15 @@ class ProductController extends Controller
     {
         $products = Product::all();
         $productsUpdated = [];
-        foreach($products as $product) {
-            $product->newImage = Voyager::image($product->image);
-            if(json_decode($product->images, true)) {
+        foreach ($products as $product) {
+            if (json_decode($product->images, true)) {
                 $images = [];
-                foreach(json_decode($product->images, true) as $image){
-                    array_push($images, Voyager::image($product->image));
+                foreach (json_decode($product->images, true) as $image) {
+                    array_push($images, Voyager::image($image));
                 }
             }
-            $product->newImages = $images;
-            $product->newImage = Voyager::image($product->image);
+            (isset($images)) ? $product->images_url = $images : '';
+            $product->images_url = Voyager::image($product->image);
             array_push($productsUpdated, $product);
         }
         return response()->json($productsUpdated, 200);
@@ -46,7 +46,7 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -78,9 +78,9 @@ class ProductController extends Controller
         $product = Product::where('slug', $slug)->firstOrFail();
         $productUpdated = [];
         $product->newImage = Voyager::image($product->image);
-        if(json_decode($product->images, true)) {
+        if (json_decode($product->images, true)) {
             $images = [];
-            foreach(json_decode($product->images, true) as $image){
+            foreach (json_decode($product->images, true) as $image) {
                 array_push($images, Voyager::image($product->image));
             }
         }
@@ -95,7 +95,7 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -106,8 +106,8 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -118,7 +118,7 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
