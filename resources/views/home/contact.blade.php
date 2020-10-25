@@ -7,7 +7,8 @@
                 <p class="font-bold text-white">{{$message}}</p>
             </div>
         @endif
-        <form id="contact" action="{{ route('contact') }}" method="post" class="flex justify-center content-center flex-col">
+        <form id="contact" action="{{ route('contact') }}" method="post"
+              class="flex justify-center content-center flex-col">
             {{csrf_field()}}
             <input type="text" name="email" placeholder="email adress">
             <div class="flex flex-row justify-between w-full">

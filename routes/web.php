@@ -1,6 +1,7 @@
 <?php
 
 use App\Mail\ContactMail;
+use App\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,14 +18,16 @@ use Illuminate\Support\Facades\Route;
 
 //Homepage routes
 Route::view('/', 'home.index')->name('home');
-Route::view('/works', 'home.works')->name('works');
 Route::view('/contact', 'home.contact')->name('contact');
 
 //Contact form route
-Route::post('/contact', function(Request $request) {
+Route::post('/contact', function (Request $request) {
     Mail::send(new ContactMail($request));
     return redirect('contact')->with('success', 'Message successfully sent');
 });
+
+//Video routes
+Route::get('/works', 'VideoController@index')->name('videos');
 
 //Cart routes
 Route::get('/cart', 'CartController@index')->name('cart.index');
