@@ -30,6 +30,7 @@ class ProductController extends Controller
         $products = Product::all();
         $productsUpdated = [];
         foreach ($products as $product) {
+            $product->image_url = Voyager::image($product->image);
             if (json_decode($product->images, true)) {
                 $images = [];
                 foreach (json_decode($product->images, true) as $image) {
@@ -37,7 +38,8 @@ class ProductController extends Controller
                 }
             }
             (isset($images)) ? $product->images_url = $images : '';
-            $product->images_url = Voyager::image($product->image);
+            unset($product->image);
+            unset($product->images);
             array_push($productsUpdated, $product);
         }
         return response()->json($productsUpdated, 200);

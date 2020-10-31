@@ -32,6 +32,7 @@ class VideoController extends Controller
         foreach ($videos as $video) {
             $video->image_url = Voyager::image($video->image);
             array_push($videosUpdated, $video);
+            unset($video->image);
         }
         return response()->json($videosUpdated, 200);
     }
