@@ -79,15 +79,16 @@ class ProductController extends Controller
     {
         $product = Product::where('slug', $slug)->firstOrFail();
         $productUpdated = [];
-        $product->newImage = Voyager::image($product->image);
+        $product->image_url = Voyager::image($product->image);
         if (json_decode($product->images, true)) {
             $images = [];
             foreach (json_decode($product->images, true) as $image) {
-                array_push($images, Voyager::image($product->image));
+                array_push($images, Voyager::image($image));
             }
         }
-        $product->newImages = $images;
-        $product->newImage = Voyager::image($product->image);
+        (isset($images)) ? $product->images_url = $images : '';
+        unset($product->image);
+        unset($product->images);
         array_push($productUpdated, $product);
 
         return response()->json($productUpdated, 200);
