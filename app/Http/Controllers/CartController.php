@@ -20,7 +20,7 @@ class CartController extends Controller
     /**
      * Display a listing of the resource via API.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function indexApi()
     {
@@ -58,9 +58,9 @@ class CartController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         Cart::remove($id);
 
@@ -73,7 +73,7 @@ class CartController extends Controller
      * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroyApi($id)
+    public function destroyApi(int $id)
     {
         Cart::remove($id);
 

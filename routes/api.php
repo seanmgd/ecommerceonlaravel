@@ -19,11 +19,25 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //Product routes
-Route::get('/shop', 'ProductController@indexApi');
-Route::get('/shop/{product}', 'ProductController@showApi');
+Route::get('/products', 'ProductController@indexApi');
+Route::get('/product/{slug}', 'ProductController@showApi');
+Route::post('/product', 'ProductController@storeApi');
+Route::patch('/product/{id}', 'ProductController@updateApi');
+Route::delete('/product/{id}', 'ProductController@destroyApi');
+
+//Artist routes
+Route::get('/artists', 'ArtistController@indexApi');
+Route::get('/artist/{slug}', 'ArtistController@showApi');
+Route::post('/artist', 'ArtistController@storeApi');
+Route::patch('/artist/{id}', 'ArtistController@updateApi');
+Route::delete('/artist/{id}', 'ArtistController@destroyApi');
 
 //Video route
 Route::get('/videos', 'VideoController@indexApi');
+Route::get('/video/{slug}', 'VideoController@showApi');
+Route::post('/video', 'VideoController@storeApi');
+Route::patch('/video/{id}', 'VideoController@updateApi');
+Route::delete('/video/{id}', 'VideoController@destroyApi');
 
 //Cart routes
 Route::get('/cart', 'CartController@indexApi');
