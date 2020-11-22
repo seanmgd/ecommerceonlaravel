@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use App\Product;
-use Illuminate\Http\Request;
 use TCG\Voyager\Facades\Voyager;
 
 class ProductController extends Controller
@@ -17,6 +17,19 @@ class ProductController extends Controller
     {
         return view('product.index', [
             'products' => Product::all()
+        ]);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param $slug
+     * @return \Illuminate\Http\Response
+     */
+    public function show(string $slug)
+    {
+        return view('product.single', [
+            'product' => Product::where('slug', $slug)->firstOrFail()
         ]);
     }
 
@@ -46,36 +59,12 @@ class ProductController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param $slug
-     * @return \Illuminate\Http\Response
-     */
-    public function show($slug)
-    {
-        return view('product.single', [
-            'product' => Product::where('slug', $slug)->firstOrFail()
-        ]);
-    }
-
-    /**
      * Display the specified resource via API.
      *
      * @param $slug
      * @return \Illuminate\Http\JsonResponse
      */
-    public function showApi($slug)
+    public function showApi(string $slug)
     {
         $product = Product::where('slug', $slug)->firstOrFail();
         $productUpdated = [];
@@ -94,38 +83,45 @@ class ProductController extends Controller
         return response()->json($productUpdated, 200);
     }
 
-
     /**
-     * Show the form for editing the specified resource.
+     * Store a newly created resource in storage via API.
      *
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * @param ProductRequest $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function edit($id)
+    public function storeApi(ProductRequest $request)
     {
-        //
+        (new Product)->createFromRequest($request);
+
+        return response()->json('Product successfully added', 200);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource in storage via API.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param ProductRequest $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, $id)
+    public function updateApi(ProductRequest $request, int $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->update($request->all());
+
+        return response()->json('Product successfully updated', 200);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from storage via API.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy($id)
+    public function destroyApi(int $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->delete();
+
+        return response()->json('Product successfully deleted', 200);
     }
 }
