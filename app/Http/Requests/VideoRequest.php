@@ -26,7 +26,8 @@ class VideoRequest extends FormRequest
         return [
             'name' => 'required|max:30|unique:videos',
             'slug' => 'required|max:30|unique:videos',
-            'link' => 'required|max:200'
+            'link' => 'required|max:200',
+            'image' => 'required|image:jpeg,png,jpg,gif,svg|max:2048'
         ];
     }
 }

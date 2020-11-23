@@ -26,7 +26,8 @@ class ArtistRequest extends FormRequest
         return [
             'name' => 'required|max:30|unique:artists',
             'slug' => 'required|max:30|unique:artists',
-            'description' => 'required|string'
+            'description' => 'required|string',
+            'image' => 'required|image:jpeg,png,jpg,gif,svg|max:2048'
         ];
     }
 }
