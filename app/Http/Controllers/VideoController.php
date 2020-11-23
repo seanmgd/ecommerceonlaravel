@@ -35,6 +35,7 @@ class VideoController extends Controller
             array_push($videosUpdated, $video);
             unset($video->image);
         }
+
         return response()->json($videosUpdated, 200);
     }
 

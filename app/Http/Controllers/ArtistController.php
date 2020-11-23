@@ -22,6 +22,7 @@ class ArtistController extends Controller
             unset($artist->image);
             array_push($artistsUpdated, $artist);
         }
+
         return response()->json($artistsUpdated, 200);
     }
 
