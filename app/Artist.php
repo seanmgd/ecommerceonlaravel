@@ -12,7 +12,7 @@ class Artist extends Model
     public function createFromRequest(ArtistRequest $request)
     {
         $artist_image = $request->file('image');
-        $artist_image->store('/', 'public');
+        $artist_image->store('', 'public');
 
         Artist::create([
             'name' => $request->get('name'),

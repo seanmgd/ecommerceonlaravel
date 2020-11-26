@@ -12,12 +12,12 @@ class Product extends Model
     public function createFromRequest(ProductRequest $request)
     {
         $product_image = $request->file('image');
-        $product_image->store('/', 'public');
+        $product_image->store('', 'public');
 
         $product_images = [];
         if ($request->hasfile('images')) {
             foreach ($request->file('images') as $image) {
-                $image->store('/', 'public');
+                $image->store('', 'public');
                 $product_images[] = $image->hashName();
             }
         }

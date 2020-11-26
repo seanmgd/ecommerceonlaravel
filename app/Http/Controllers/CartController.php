@@ -57,10 +57,10 @@ class CartController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param string $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(int $id)
+    public function destroy(string $id)
     {
         Cart::remove($id);
 
@@ -70,10 +70,10 @@ class CartController extends Controller
     /**
      * Remove the specified resource from storage via API.
      *
-     * @param int $id
+     * @param string $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroyApi(int $id)
+    public function destroyApi(string $id)
     {
         Cart::remove($id);
 

@@ -12,8 +12,10 @@ class Video extends Model
 
     public function createFromRequest(VideoRequest $request)
     {
-        $video_image = $request->file('image');
-        $video_image->store('/', 'public');
+        if ($request->file('image')) {
+            $video_image = $request->file('image');
+            $video_image->store('', 'public');
+        }
 
         Video::create([
             'name' => $request->get('name'),
