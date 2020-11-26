@@ -24,11 +24,11 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:30|unique:products',
-            'slug' => 'required|max:30|unique:products',
-            'description' => 'required|string',
-            'price' => 'required|numeric|regex:/^(\d+(?:[\.\,]\d{1,2})?)$/',
-            'image' => 'required|image:jpeg,png,jpg,gif,svg|max:2048'
+            'name' => 'max:30|unique:products',
+            'slug' => 'max:30|unique:products',
+            'description' => 'string',
+            'price' => 'numeric|regex:/^(\d+(?:[\.\,]\d{1,2})?)$/',
+            'image' => 'max:2048'
         ];
     }
 }

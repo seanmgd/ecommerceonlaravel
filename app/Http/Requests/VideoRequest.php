@@ -24,10 +24,10 @@ class VideoRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:30|unique:videos',
-            'slug' => 'required|max:30|unique:videos',
-            'link' => 'required|max:200',
-            'image' => 'required|image:jpeg,png,jpg,gif,svg|max:2048'
+            'name' => 'max:30|unique:videos',
+            'slug' => 'max:30|unique:videos',
+            'link' => 'max:200',
+            'image' => 'max:2048'
         ];
     }
 }
