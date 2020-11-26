@@ -81,7 +81,7 @@ class ProductController extends Controller
         unset($product->images);
         array_push($productUpdated, $product);
 
-        return response()->json($productUpdated, 200);
+        return response()->json((object)$productUpdated[0], 200);
     }
 
     /**
