@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use App\Mail\ContactMail;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,3 +46,10 @@ Route::get('/cart', 'CartController@indexApi');
 Route::get('/cart/reset', 'CartController@resetApi');
 Route::post('/cart', 'CartController@storeApi');
 Route::delete('/cart/{product}', 'CartController@destroyApi');
+
+
+//Contact form route
+Route::post('/contact', function (Request $request) {
+    Mail::send(new ContactMail($request));
+    return response()->json('Message successfully sent',200);
+});
