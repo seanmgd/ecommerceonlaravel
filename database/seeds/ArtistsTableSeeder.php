@@ -10,20 +10,35 @@ class ArtistsTableSeeder extends Seeder
         Artist::create([
             'name' => 'Mentlec',
             'slug' => 'mentlec',
-            'sc_link' => 'https://soundcloud.con',
-            'description' => 'music producer'
+            'fb_link' => 'https://facebook.com/',
+            'sc_link' => 'https://soundcloud.com/mentelc',
+            'yt_link' => 'https://www.youtube.com/',
+            'vimeo_link' => 'https://vimeo.com/461800955',
+            'ig_link' => 'https://www.instagram.com/clemtlrt/',
+            'description' => 'music producer',
+            'image_url' => 'https://i.ibb.co/vL3xQCQ/mentlec.jpg',
         ]);
         Artist::create([
-            'name' => 'Artiste 2',
-            'slug' => 'artiste_2',
-            'sc_link' => 'https://soundcloud.con',
-            'description' => 'vj producer'
+            'name' => 'jääj',
+            'slug' => 'jaaj',
+            'fb_link' => 'https://facebook.com/',
+            'sc_link' => 'https://soundcloud.com/',
+            'yt_link' => 'https://www.youtube.com/',
+            'vimeo_link' => 'https://vimeo.com/',
+            'ig_link' => 'https://www.instagram.com/',
+            'description' => 'vj producer',
+            'image_url' => 'https://i.ibb.co/dMZScXf/I-HM.jpg',
         ]);
         Artist::create([
-            'name' => 'Artist 3',
-            'slug' => 'artist_3',
-            'sc_link' => 'https://soundcloud.con',
-            'description' => 'vj producer'
+            'name' => 'hill_wolf',
+            'slug' => 'hill_wolf',
+            'fb_link' => 'https://facebook.com/',
+            'sc_link' => 'https://soundcloud.com/',
+            'yt_link' => 'https://www.youtube.com/',
+            'vimeo_link' => 'https://vimeo.com/',
+            'ig_link' => 'https://www.instagram.com/',
+            'description' => 'vj producer',
+            'image_url' => 'https://i.ibb.co/0tLHXhL/I-HM2.jpg',
         ]);
     }
 }
