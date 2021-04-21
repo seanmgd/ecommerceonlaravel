@@ -42,8 +42,3 @@ Route::get('/checkout/success', 'CheckoutController@success')->name('checkout.su
 //Product routes
 Route::get('/shop', 'ProductController@index')->name('shop');
 Route::get('/shop/{product}', 'ProductController@show')->name('product');
-
-
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});
